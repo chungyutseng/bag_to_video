@@ -1,0 +1,8 @@
+<launch>
+	<node pkg="bag_to_video" type="bag_to_video.py" name="bag_to_video" output="screen"/>
+	<!-- <node pkg="keyboard_control_tello" type="fly_cmd.py" name="cmd" output="screen"/> -->
+    <node pkg="image_transport" name="image_compressed1" type="republish" args="h264 in:=/tello/image_raw raw out:=raw_image" />
+    <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/chungyu/.ros/data3_2021-11-15-20-20-58.bag"/>
+    <!-- <node name="record_topics_for_verification" pkg="rosbag" type="record" args="-a -o data3 -x /raw_image"/> -->
+    <!-- <node name="record_topics_for_verification" pkg="rosbag" type="record" args="-a -o data1"/> -->
+</launch>
